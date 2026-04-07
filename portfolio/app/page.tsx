@@ -204,7 +204,7 @@ function Hero() {
         transition={{ delay: 0.2, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
       >
         <div className="hero-avatar-glow" />
-        <img src="/1dao2mang/avatar.jpg" alt="Lê Văn Khoa" className="hero-avatar-img" />
+        <img src="/khoazandev/avatar.jpg" alt="Lê Văn Khoa" className="hero-avatar-img" />
       </motion.div>
 
       <motion.div
@@ -262,7 +262,7 @@ function Hero() {
         >
           {t("hero.cta.github")}
         </a>
-        <a href="/1dao2mang/CV_LeVanKhoa.pdf" download="CV_LeVanKhoa.pdf" className="btn btn-outline">
+        <a href="/khoazandev/CV_LeVanKhoa.pdf" download="CV_LeVanKhoa.pdf" className="btn btn-outline">
           <FiDownload size={16} />
           {t("hero.cta.cv")}
         </a>
