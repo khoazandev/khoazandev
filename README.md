@@ -2,8 +2,8 @@
 
 <img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,50:161b22,100:238636&height=190&section=header&text=Hi%20I'm%20Khoa%20👋&fontSize=40&fontColor=ffffff&animation=fadeIn&fontAlignY=35&desc=Final-year%20Software%20Engineering%20Student%20|%20Full-Stack%20Developer%20|%20Open%20to%20Internships&descSize=17&descAlignY=56&descColor=8b949e"/>
 
-[![GitHub followers](https://img.shields.io/github/followers/1dao2mang?style=for-the-badge&logo=github&logoColor=white&labelColor=0d1117&color=238636)](https://github.com/1dao2mang?tab=followers)
-![Profile Views](https://komarev.com/ghpvc/?username=1dao2mang&style=for-the-badge&color=238636&labelColor=0d1117)
+[![GitHub followers](https://img.shields.io/github/followers/khoazandev?style=for-the-badge&logo=github&logoColor=white&labelColor=0d1117&color=238636)](https://github.com/khoazandev?tab=followers)
+![Profile Views](https://komarev.com/ghpvc/?username=khoazandev&style=for-the-badge&color=238636&labelColor=0d1117)
 
 </div>
 
@@ -65,8 +65,8 @@ As a Core Full-Stack Developer on **Smarthire**, I implemented an end-to-end rec
 
 <div align="center">
 
-<img height="170em" src="https://github-readme-stats.vercel.app/api?username=1dao2mang&show_icons=true&theme=github_dark&border_color=30363d&bg_color=0d1117&title_color=58a6ff&icon_color=238636&text_color=8b949e&include_all_commits=true&count_private=true" />
-<img height="170em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=1dao2mang&layout=compact&theme=github_dark&border_color=30363d&bg_color=0d1117&title_color=58a6ff&text_color=8b949e" />
+<img height="170em" src="https://github-readme-stats.vercel.app/api?username=khoazandev&show_icons=true&theme=github_dark&border_color=30363d&bg_color=0d1117&title_color=58a6ff&icon_color=238636&text_color=8b949e&include_all_commits=true&count_private=true" />
+<img height="170em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=khoazandev&layout=compact&theme=github_dark&border_color=30363d&bg_color=0d1117&title_color=58a6ff&text_color=8b949e" />
 
 </div>
 
@@ -76,7 +76,7 @@ As a Core Full-Stack Developer on **Smarthire**, I implemented an end-to-end rec
 
 - **Email:** [levankhoa2004@gmail.com](mailto:levankhoa2004@gmail.com)
 - **LinkedIn:** [Lê Văn Khoa](https://www.linkedin.com/in/l%C3%AA-v%C4%83n-khoa-31961916b/)
-- **GitHub:** [1dao2mang](https://github.com/1dao2mang)
+- **GitHub:** [khoazandev](https://github.com/khoazandev)
 
 > I’m open to Frontend Developer Intern / Software Engineer Intern opportunities.
 
