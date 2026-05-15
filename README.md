@@ -90,8 +90,13 @@ The app is configured for GitHub Pages with `output: "export"` and `basePath: "/
 
 <div align="center">
 
-<img height="170em" src="https://github-readme-stats.vercel.app/api?username=khoazandev&show_icons=true&theme=github_dark&border_color=30363d&bg_color=0d1117&title_color=58a6ff&icon_color=238636&text_color=8b949e&include_all_commits=true&count_private=true" />
-<img height="170em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=khoazandev&layout=compact&theme=github_dark&border_color=30363d&bg_color=0d1117&title_color=58a6ff&text_color=8b949e" />
+<img width="100%" src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=khoazandev&theme=github_dark" alt="Khoa's GitHub profile summary" />
+
+<img width="49%" src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=khoazandev&theme=github_dark" alt="Khoa's repositories by language" />
+<img width="49%" src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=khoazandev&theme=github_dark" alt="Khoa's most committed languages" />
+
+<img width="49%" src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=khoazandev&theme=github_dark" alt="Khoa's GitHub stats" />
+<img width="49%" src="https://streak-stats.demolab.com?user=khoazandev&theme=github-dark-blue&hide_border=true" alt="Khoa's GitHub streak" />
 
 </div>
 
