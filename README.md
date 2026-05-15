@@ -90,7 +90,7 @@ The app is configured for GitHub Pages with `output: "export"` and `basePath: "/
 
 <div align="center">
 
-<img width="48%" src="https://ghstats.dev/api/card?username=khoazandev&theme=default&hide_border=true&show_ring=false&border_radius=4.5&size=compact" alt="Khoa's GitHub stats" />
+<img width="48%" src="https://ghstats.dev/api/card?username=khoazandev&theme=default&hide_border=true&show_ring=true&border_radius=4.5&size=compact" alt="Khoa's GitHub stats" />
 <img width="48%" src="https://ghstats.dev/api/langs?username=khoazandev&theme=default&layout=bar&hide_border=true&border_radius=4.5&max_langs=6" alt="Khoa's top languages" />
 
 </div>
