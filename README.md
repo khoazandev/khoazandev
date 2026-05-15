@@ -90,13 +90,7 @@ The app is configured for GitHub Pages with `output: "export"` and `basePath: "/
 
 <div align="center">
 
-<img width="100%" src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=khoazandev&theme=github_dark" alt="Khoa's GitHub profile summary" />
-
-<img width="49%" src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=khoazandev&theme=github_dark" alt="Khoa's repositories by language" />
-<img width="49%" src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=khoazandev&theme=github_dark" alt="Khoa's most committed languages" />
-
-<img width="49%" src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=khoazandev&theme=github_dark" alt="Khoa's GitHub stats" />
-<img width="49%" src="https://streak-stats.demolab.com?user=khoazandev&theme=github-dark-blue&hide_border=true" alt="Khoa's GitHub streak" />
+<img width="100%" src="github-metrics.svg" alt="Khoa's GitHub metrics" />
 
 </div>
 
