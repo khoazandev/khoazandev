@@ -1,6 +1,6 @@
 <div align="center">
 
-<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,50:161b22,100:238636&height=190&section=header&text=Hi%2C%20I'm%20Khoa%20%F0%9F%91%8B&fontSize=40&fontColor=ffffff&animation=fadeIn&fontAlignY=35&desc=Software%20Engineering%20Student%20%7C%20Full-Stack%20Developer%20%7C%20Open%20to%20Internships&descSize=17&descAlignY=56&descColor=8b949e"/>
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,50:161b22,100:238636&height=190&section=header&text=Hi%2C%20I'm%20Khoa%20%F0%9F%91%8B&fontSize=40&fontColor=ffffff&animation=fadeIn&fontAlignY=35&desc=Full-Stack%20Developer%20%7C%20Frontend-Focused%20Engineer%20%7C%20Open%20to%20Internships&descSize=17&descAlignY=56&descColor=8b949e"/>
 
 [![Portfolio](https://img.shields.io/badge/Portfolio-khoazandev.github.io-238636?style=for-the-badge&logo=vercel&logoColor=white&labelColor=0d1117)](https://khoazandev.github.io/khoazandev/)
 [![GitHub followers](https://img.shields.io/github/followers/khoazandev?style=for-the-badge&logo=github&logoColor=white&labelColor=0d1117&color=238636)](https://github.com/khoazandev?tab=followers)
@@ -20,24 +20,23 @@ I'm open to **Software Engineer Intern** and **Frontend Developer Intern** roles
 
 ---
 
-## Tech Stack
-
-### Languages
-![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+## Core Stack
 
 ### Frontend
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
 ![Framer Motion](https://img.shields.io/badge/Framer_Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white)
 
-### Backend, Cloud & Tools
+### Backend
+![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
 ![Spring Boot](https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white)
 ![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
-![Express](https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white)
+![REST APIs](https://img.shields.io/badge/REST_APIs-02569B?style=for-the-badge)
+
+### Tools & Deployment
+![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 ![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
 ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white)
@@ -50,6 +49,7 @@ I'm open to **Software Engineer Intern** and **Frontend Developer Intern** roles
 
 An AI-powered recruitment platform built with a **Next.js** frontend and **Spring Boot** backend.
 
+- Links: [Repository](https://github.com/tuananhit1612/smart-hire-web) · [Live Demo](https://tuananhit1612.github.io/smart-hire-web/)
 - Built polished, responsive UI modules for job boards, candidate flows, dashboards, and HR workflows.
 - Implemented complex frontend states including recruitment pipeline boards, AI candidate scoring views, and mock interview panels.
 - Integrated authentication flows, API error handling, route guards, and token refresh behavior.
@@ -57,24 +57,17 @@ An AI-powered recruitment platform built with a **Next.js** frontend and **Sprin
 
 ### Other Projects
 
-- **IELTS_WEB**: IELTS practice platform with mock exams, scoring flows, vocabulary tools, listening/reading modules, and progress tracking.
-- **Personal Finance Manager**: Mobile finance tracker with income/expense logging, category management, reports, and biometric login.
-- **GamePlus**: Flutter gaming hub with Flame Engine gameplay, themes, audio effects, and offline leaderboard support.
-- **Reroll-DoMiXi**: Interactive reroll web app for randomized game character tiers with animated transitions.
+- **IELTS_WEB**: IELTS practice platform with mock exams, scoring flows, vocabulary tools, listening/reading modules, and progress tracking. [Repository](https://github.com/1dao2mang/IELTS_WEB) · [Live Demo](https://1dao2mang.github.io/IELTS_WEB/)
+- **Personal Finance Manager**: Mobile finance tracker with income/expense logging, category management, reports, and biometric login. [Repository](https://github.com/1dao2mang/Personal-Finance-Manager)
+- **GamePlus**: Flutter gaming hub with Flame Engine gameplay, themes, audio effects, and offline leaderboard support. [Repository](https://github.com/1dao2mang/game_plus)
+- **Reroll-DoMiXi**: Interactive reroll web app for randomized game character tiers with animated transitions. [Repository](https://github.com/1dao2mang/Reroll-DoMiXi)
 
 ---
 
-## Portfolio Site
+## Portfolio
 
-This repository includes a static portfolio app in [`portfolio/`](./portfolio), built with **Next.js 16**, **React 19**, **TypeScript**, and **Framer Motion**.
-
-```bash
-cd portfolio
-npm ci
-npm run dev
-```
-
-The app is configured for GitHub Pages with `output: "export"` and `basePath: "/khoazandev"`.
+- **Live:** [khoazandev.github.io/khoazandev](https://khoazandev.github.io/khoazandev/)
+- **Source:** [`portfolio/`](./portfolio) — a **Next.js 16** static export deployed on GitHub Pages.
 
 ---
 
