@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiSearch, FiX } from "react-icons/fi";
 import { useLocale } from "../i18n";
@@ -25,17 +25,21 @@ export default function SearchOverlay({
   useEffect(() => {
     if (open) {
       setTimeout(() => inputRef.current?.focus(), 100);
-      setQuery("");
     }
   }, [open]);
 
+  const handleClose = useCallback(() => {
+    setQuery("");
+    onClose();
+  }, [onClose]);
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
+      if (e.key === "Escape") handleClose();
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [onClose]);
+  }, [handleClose]);
 
   const allItems: SearchResult[] = [
     { title: "SmartHire AI", section: t("nav.projects"), href: "#projects" },
@@ -50,7 +54,6 @@ export default function SearchOverlay({
     { title: "Tailwind CSS", section: t("nav.skills"), href: "#skills" },
     { title: t("about.title"), section: t("nav.about"), href: "#about" },
     { title: t("contact.title"), section: t("nav.contact"), href: "#contact" },
-    { title: "Blog / Articles", section: "Blog", href: "#blog" },
   ];
 
   const q = query.toLowerCase();
@@ -89,7 +92,7 @@ export default function SearchOverlay({
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
               />
-              <button className="search-close-btn" onClick={onClose} aria-label="Close search">
+              <button className="search-close-btn" onClick={handleClose} aria-label="Close search">
                 <FiX size={20} />
               </button>
             </div>
@@ -101,7 +104,7 @@ export default function SearchOverlay({
                     key={i}
                     href={r.href}
                     className="search-result-item"
-                    onClick={onClose}
+                    onClick={handleClose}
                   >
                     <span className="search-result-title">{r.title}</span>
                     <span className="search-result-section">{r.section}</span>
@@ -117,7 +120,7 @@ export default function SearchOverlay({
             )}
           </motion.div>
 
-          <div className="search-backdrop" onClick={onClose} />
+          <div className="search-backdrop" onClick={handleClose} />
         </motion.div>
       )}
     </AnimatePresence>

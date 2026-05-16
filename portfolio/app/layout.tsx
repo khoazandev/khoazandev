@@ -21,10 +21,10 @@ export default function RootLayout({
   return (
     <html lang={locale} data-theme="dark">
       <head>
-        <title>Lê Văn Khoa — Software Engineer</title>
+        <title>Lê Văn Khoa — Full-Stack Developer</title>
         <meta
           name="description"
-          content="Portfolio of Lê Văn Khoa (1dao2mang) — Software Engineering student at HUTECH, specializing in web development, cloud infrastructure, and open-source projects."
+          content="Portfolio of Lê Văn Khoa — full-stack developer focused on polished web products with Next.js, React, Node.js, and Spring Boot."
         />
       </head>
       <body>

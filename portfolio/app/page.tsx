@@ -1,8 +1,9 @@
 "use client";
 
 import { useState, useEffect, useRef, useMemo } from "react";
+import Image from "next/image";
 import { motion, useScroll, useTransform, useMotionValueEvent } from "framer-motion";
-import { FiSearch, FiMoon, FiSun, FiDownload, FiExternalLink, FiGithub, FiLinkedin, FiMail, FiYoutube } from "react-icons/fi";
+import { FiSearch, FiMoon, FiSun, FiDownload, FiExternalLink, FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
 import { useLocale } from "./i18n";
 import { useTheme } from "./components/ThemeProvider";
 import ParticleField from "./components/ParticleField";
@@ -136,6 +137,7 @@ function Hero() {
     t("hero.typing.2"),
     t("hero.typing.3"),
   ];
+  const typingResetKey = phrases.join("|");
   const [current, setCurrent] = useState(0);
   const [text, setText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
@@ -147,7 +149,7 @@ function Hero() {
     setCurrent(0);
     setIsDeleting(false);
     setIsPaused(false);
-  }, [phrases[0]]); // reset when locale changes
+  }, [typingResetKey]); // reset when locale changes
 
   useEffect(() => {
     const phrase = phrases[current];
@@ -204,7 +206,14 @@ function Hero() {
         transition={{ delay: 0.2, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
       >
         <div className="hero-avatar-glow" />
-        <img src="/khoazandev/avatar.jpg" alt="Lê Văn Khoa" className="hero-avatar-img" />
+        <Image
+          src="/avatar.jpg"
+          alt="Lê Văn Khoa"
+          width={160}
+          height={160}
+          priority
+          className="hero-avatar-img"
+        />
       </motion.div>
 
       <motion.div
@@ -255,7 +264,7 @@ function Hero() {
           {t("hero.cta.projects")}
         </a>
         <a
-          href="https://github.com/1dao2mang"
+          href="https://github.com/khoazandev"
           target="_blank"
           rel="noopener noreferrer"
           className="btn btn-outline"
@@ -275,10 +284,9 @@ function Hero() {
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 0.6 }}
       >
-        <a href="https://github.com/1dao2mang" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><FiGithub size={20} /></a>
+        <a href="https://github.com/khoazandev" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><FiGithub size={20} /></a>
         <a href="https://www.linkedin.com/in/khoazanday241204/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><FiLinkedin size={20} /></a>
         <a href="mailto:levankhoa2004@gmail.com" aria-label="Email"><FiMail size={20} /></a>
-        <a href="https://youtube.com/@1dao2mang" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><FiYoutube size={20} /></a>
       </motion.div>
     </motion.section>
   );
@@ -291,11 +299,11 @@ function Skills() {
   const { t } = useLocale();
 
   const skillsData = [
-    { category: t("skills.cat.languages"), items: ["TypeScript", "JavaScript", "Python"], icon: "💻" },
-    { category: t("skills.cat.frontend"), items: ["React", "Next.js", "HTML/CSS", "Tailwind CSS"], icon: "🎨" },
-    { category: t("skills.cat.backend"), items: ["Node.js", "Express", "REST APIs", "Prisma"], icon: "⚙️" },
-    { category: t("skills.cat.cloud"), items: ["AWS", "GCP", "Cloudflare", "Vercel", "GitHub Actions", "Docker"], icon: "☁️" },
-    { category: t("skills.cat.tools"), items: ["Git", "Figma", "Postman", "Vitest", "ESLint"], icon: "🔧" },
+    { category: t("skills.cat.languages"), items: ["TypeScript", "JavaScript", "Java"], icon: "💻" },
+    { category: t("skills.cat.frontend"), items: ["React", "Next.js", "Tailwind CSS", "Framer Motion"], icon: "🎨" },
+    { category: t("skills.cat.backend"), items: ["Spring Boot", "Node.js", "REST APIs", "JWT/Auth"], icon: "⚙️" },
+    { category: t("skills.cat.cloud"), items: ["Vercel", "GitHub Pages", "GitHub Actions", "Docker"], icon: "☁️" },
+    { category: t("skills.cat.tools"), items: ["Git", "Figma", "Postman", "ESLint"], icon: "🔧" },
     { category: t("skills.cat.soft"), items: [t("skills.soft.problem"), t("skills.soft.team"), t("skills.soft.learner")], icon: "🧠" },
   ];
 
@@ -449,8 +457,8 @@ function About() {
   const { t } = useLocale();
 
   const infoCards = [
-    { label: t("about.info.university.label"), value: t("about.info.university.value") },
-    { label: t("about.info.major.label"), value: t("about.info.major.value") },
+    { label: t("about.info.role.label"), value: t("about.info.role.value") },
+    { label: t("about.info.stack.label"), value: t("about.info.stack.value") },
     { label: t("about.info.location.label"), value: t("about.info.location.value") },
     { label: t("about.info.focus.label"), value: t("about.info.focus.value") },
   ];
@@ -525,8 +533,8 @@ function Contact() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const subject = `Portfolio Contact from ${formData.name}`;
-    const body = `Name: ${formData.name}%0AEmail: ${formData.email}%0A%0A${formData.message}`;
-    window.open(`mailto:levankhoa2004@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`);
+    const body = `Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`;
+    window.location.href = `mailto:levankhoa2004@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     setSent(true);
     setTimeout(() => setSent(false), 4000);
   };
@@ -547,7 +555,7 @@ function Contact() {
                 <span className="icon"><FiMail size={20} /></span>
                 levankhoa2004@gmail.com
               </a>
-              <a href="https://github.com/1dao2mang" target="_blank" rel="noopener noreferrer" className="contact-link">
+              <a href="https://github.com/khoazandev" target="_blank" rel="noopener noreferrer" className="contact-link">
                 <span className="icon"><FiGithub size={20} /></span>
                 GitHub
               </a>
@@ -609,145 +617,6 @@ function Contact() {
 }
 
 /* ================================================================
-   SUBSCRIBE
-   ================================================================ */
-function Subscribe() {
-  const { t } = useLocale();
-  const [email, setEmail] = useState("");
-  const [subscribed, setSubscribed] = useState(false);
-
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email.trim()) return;
-    // Mock: store in localStorage
-    const subs = JSON.parse(localStorage.getItem("portfolio-subs") || "[]");
-    subs.push({ email, date: new Date().toISOString() });
-    localStorage.setItem("portfolio-subs", JSON.stringify(subs));
-    setSubscribed(true);
-    setEmail("");
-    setTimeout(() => setSubscribed(false), 4000);
-  };
-
-  return (
-    <section id="subscribe" className="section subscribe-section">
-      <div className="subscribe-bg-pattern" />
-      <ScrollReveal>
-        <div className="subscribe-content">
-          <div className="section-label">{t("subscribe.label")}</div>
-          <h2 className="section-title">{t("subscribe.title")}</h2>
-          <p className="subscribe-text">{t("subscribe.text")}</p>
-          <form className="subscribe-form" onSubmit={handleSubscribe}>
-            <input
-              type="email"
-              placeholder={t("subscribe.placeholder")}
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-            <button type="submit" className="btn btn-primary">
-              {t("subscribe.btn")}
-            </button>
-          </form>
-          {subscribed && (
-            <motion.p
-              className="subscribe-success"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-            >
-              {t("subscribe.success")}
-            </motion.p>
-          )}
-        </div>
-      </ScrollReveal>
-    </section>
-  );
-}
-
-/* ================================================================
-   BLOG / TECHNICAL DOCS
-   ================================================================ */
-function Blog() {
-  const { t } = useLocale();
-
-  const articles = [
-    {
-      title: "Building a Design System with Tailwind CSS",
-      excerpt: "Learn how to create a scalable, consistent design system using Tailwind CSS utility classes and custom configuration.",
-      tags: ["Tailwind CSS", "Design System", "Frontend"],
-      date: "Mar 2026",
-      readTime: "8 min read",
-    },
-    {
-      title: "CI/CD Pipeline with GitHub Actions",
-      excerpt: "Step-by-step guide to setting up automated testing, linting, and deployment using GitHub Actions for Next.js projects.",
-      tags: ["DevOps", "GitHub Actions", "CI/CD"],
-      date: "Feb 2026",
-      readTime: "12 min read",
-    },
-    {
-      title: "State Management: Zustand vs Redux",
-      excerpt: "A practical comparison of Zustand and Redux Toolkit for state management in modern React applications.",
-      tags: ["React", "Zustand", "Redux"],
-      date: "Jan 2026",
-      readTime: "10 min read",
-    },
-    {
-      title: "Docker for Frontend Developers",
-      excerpt: "Why and how frontend developers should use Docker for local development, testing, and consistent deployments.",
-      tags: ["Docker", "DevOps", "Frontend"],
-      date: "Dec 2025",
-      readTime: "6 min read",
-    },
-  ];
-
-  return (
-    <section id="blog" className="section">
-      <ScrollReveal>
-        <div className="section-label">{t("blog.label")}</div>
-        <h2 className="section-title">{t("blog.title")}</h2>
-      </ScrollReveal>
-
-      <div className="blog-grid">
-        {articles.map((article, i) => (
-          <ScrollReveal key={article.title} delay={i * 0.08}>
-            <div className="blog-card">
-              <div className="blog-card-meta">
-                <span className="blog-date">{article.date}</span>
-                <span className="blog-readtime">{article.readTime}</span>
-              </div>
-              <h3 className="blog-card-title">{article.title}</h3>
-              <p className="blog-card-excerpt">{article.excerpt}</p>
-              <div className="blog-card-tags">
-                {article.tags.map((tag) => (
-                  <span key={tag} className="blog-tag">{tag}</span>
-                ))}
-              </div>
-              <a href="#" className="blog-read-more">{t("blog.readMore")}</a>
-            </div>
-          </ScrollReveal>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-/* ================================================================
-   YOUTUBE BADGE
-   ================================================================ */
-function YouTubeBadge() {
-  const { t } = useLocale();
-  return (
-    <div className="youtube-badge">
-      <FiYoutube size={20} />
-      <div className="youtube-info">
-        <span className="youtube-count">1dao2mang</span>
-        <span className="youtube-label">{t("youtube.label")}</span>
-      </div>
-    </div>
-  );
-}
-
-/* ================================================================
    PAGE
    ================================================================ */
 export default function Home() {
@@ -784,7 +653,7 @@ export default function Home() {
       <footer className="footer">
         <div className="footer-content">
           <p>
-            © 2025 <a href="https://github.com/1dao2mang">Lê Văn Khoa</a>.{" "}
+            © 2025 <a href="https://github.com/khoazandev">Lê Văn Khoa</a>.{" "}
             {t("footer.text")}
           </p>
         </div>
