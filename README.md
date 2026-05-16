@@ -16,7 +16,7 @@ I'm **Lê Văn Khoa**, a full-stack developer focused on building polished, reli
 
 I enjoy turning product ideas into clean interfaces, practical API designs, and maintainable systems. My work usually sits across the frontend and backend: responsive UI, authentication, dashboards, REST APIs, deployment flows, and the small details that make an application feel complete.
 
-I'm currently looking for **Software Engineer Intern** and **Frontend Developer Intern** opportunities where I can contribute to real-world products, move fast with a team, and keep improving through production-level engineering work.
+I'm open to **Software Engineer Intern** and **Frontend Developer Intern** roles where I can contribute across product, frontend, and backend work while growing in a strong engineering environment.
 
 ---
 
