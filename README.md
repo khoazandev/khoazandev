@@ -12,11 +12,11 @@
 
 ## About Me
 
-I'm **Lê Văn Khoa**, a final-year **Software Engineering** student at **HUTECH University** in Ho Chi Minh City, Vietnam.
+I'm **Lê Văn Khoa**, a full-stack developer focused on building polished, reliable web products with **Next.js**, **React**, **Node.js**, and **Spring Boot**.
 
-I focus on building modern full-stack products with **Next.js**, **React**, **Node.js**, and **Spring Boot**. I care about clean UI systems, secure backend APIs, clear product flows, and deployment practices that make projects easier to maintain.
+I enjoy turning product ideas into clean interfaces, practical API designs, and maintainable systems. My work usually sits across the frontend and backend: responsive UI, authentication, dashboards, REST APIs, deployment flows, and the small details that make an application feel complete.
 
-I'm currently looking for **Software Engineer Intern** and **Frontend Developer Intern** opportunities where I can contribute to real products, learn from strong engineering teams, and keep improving across the full stack.
+I'm currently looking for **Software Engineer Intern** and **Frontend Developer Intern** opportunities where I can contribute to real-world products, move fast with a team, and keep improving through production-level engineering work.
 
 ---
 
