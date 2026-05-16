@@ -207,7 +207,7 @@ function Hero() {
       >
         <div className="hero-avatar-glow" />
         <Image
-          src="/avatar.jpg"
+          src="/khoazandev/avatar.jpg"
           alt="Lê Văn Khoa"
           width={160}
           height={160}
