@@ -7,22 +7,25 @@ export default function CustomCursor() {
   const innerRef = useRef<HTMLDivElement>(null);
   const posRef = useRef({ x: 0, y: 0 });
   const outerPos = useRef({ x: 0, y: 0 });
+  const visibleRef = useRef(false);
   const [hovering, setHovering] = useState(false);
   const [clicking, setClicking] = useState(false);
   const [visible, setVisible] = useState(false);
   const animRef = useRef<number>(0);
 
   useEffect(() => {
-    // Hide on touch / mobile
-    if ("ontouchstart" in window) return;
+    if ("ontouchstart" in window || window.matchMedia("(pointer: coarse)").matches) return;
 
     const onMove = (e: MouseEvent) => {
       posRef.current = { x: e.clientX, y: e.clientY };
-      if (!visible) setVisible(true);
+      if (!visibleRef.current) {
+        visibleRef.current = true;
+        outerPos.current = { x: e.clientX, y: e.clientY };
+        setVisible(true);
+      }
 
-      // Inner dot follows instantly
       if (innerRef.current) {
-        innerRef.current.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
+        innerRef.current.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0) translate(-50%, -50%)`;
       }
     };
 
@@ -31,7 +34,7 @@ export default function CustomCursor() {
 
     const onOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      if (
+      const isInteractive =
         target.tagName === "A" ||
         target.tagName === "BUTTON" ||
         target.closest("a") ||
@@ -39,29 +42,24 @@ export default function CustomCursor() {
         target.classList.contains("skill-tag") ||
         target.classList.contains("filter-pill") ||
         target.classList.contains("project-card") ||
-        target.classList.contains("contact-link")
-      ) {
-        setHovering(true);
-      }
+        target.classList.contains("contact-link");
+      setHovering(Boolean(isInteractive));
     };
-    const onOut = () => setHovering(false);
 
-    // Outer ring with smooth lerp
     const animate = () => {
-      outerPos.current.x += (posRef.current.x - outerPos.current.x) * 0.12;
-      outerPos.current.y += (posRef.current.y - outerPos.current.y) * 0.12;
+      outerPos.current.x += (posRef.current.x - outerPos.current.x) * 0.18;
+      outerPos.current.y += (posRef.current.y - outerPos.current.y) * 0.18;
       if (outerRef.current) {
-        outerRef.current.style.transform = `translate(${outerPos.current.x}px, ${outerPos.current.y}px) translate(-50%, -50%)`;
+        outerRef.current.style.transform = `translate3d(${outerPos.current.x}px, ${outerPos.current.y}px, 0) translate(-50%, -50%)`;
       }
       animRef.current = requestAnimationFrame(animate);
     };
     animate();
 
-    window.addEventListener("mousemove", onMove);
+    window.addEventListener("mousemove", onMove, { passive: true });
     window.addEventListener("mousedown", onDown);
     window.addEventListener("mouseup", onUp);
     document.addEventListener("mouseover", onOver);
-    document.addEventListener("mouseout", onOut);
 
     return () => {
       cancelAnimationFrame(animRef.current);
@@ -69,42 +67,39 @@ export default function CustomCursor() {
       window.removeEventListener("mousedown", onDown);
       window.removeEventListener("mouseup", onUp);
       document.removeEventListener("mouseover", onOver);
-      document.removeEventListener("mouseout", onOut);
     };
-  }, [visible]);
+  }, []);
 
   if (!visible) return null;
 
   return (
     <>
-      {/* Outer ring */}
       <div
         ref={outerRef}
         style={{
           position: "fixed",
           top: 0,
           left: 0,
-          width: hovering ? 56 : 40,
-          height: hovering ? 56 : 40,
-          border: `2px solid rgba(0, 255, 136, ${hovering ? 0.8 : 0.4})`,
+          width: hovering ? 48 : 34,
+          height: hovering ? 48 : 34,
+          border: `1.5px solid rgba(0, 255, 136, ${hovering ? 0.85 : 0.4})`,
+          background: hovering ? "rgba(0, 255, 136, 0.06)" : "transparent",
           borderRadius: "50%",
           pointerEvents: "none",
           zIndex: 99999,
-          transition: "width 0.3s, height 0.3s, border-color 0.3s",
-          mixBlendMode: "difference",
+          transition: "width 0.2s, height 0.2s, border-color 0.2s, background 0.2s",
           willChange: "transform",
         }}
       />
-      {/* Inner dot */}
       <div
         ref={innerRef}
         style={{
           position: "fixed",
           top: 0,
           left: 0,
-          width: clicking ? 12 : hovering ? 0 : 6,
-          height: clicking ? 12 : hovering ? 0 : 6,
-          background: "#00ff88",
+          width: clicking ? 10 : hovering ? 8 : 6,
+          height: clicking ? 10 : hovering ? 8 : 6,
+          background: "var(--accent-green)",
           borderRadius: "50%",
           pointerEvents: "none",
           zIndex: 99999,

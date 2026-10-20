@@ -7,7 +7,7 @@ export default function Preloader() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 2200);
+    const timer = setTimeout(() => setLoading(false), 650);
     return () => clearTimeout(timer);
   }, []);
 
@@ -17,20 +17,19 @@ export default function Preloader() {
         <motion.div
           className="preloader"
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
           style={{
             position: "fixed",
             inset: 0,
             zIndex: 100000,
-            background: "#0a0a0f",
+            background: "var(--bg-primary)",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            gap: 24,
+            gap: 20,
           }}
         >
-          {/* Logo text reveal */}
           <motion.div
             style={{
               fontFamily: "'JetBrains Mono', monospace",
@@ -40,29 +39,28 @@ export default function Preloader() {
             }}
           >
             <motion.span
-              initial={{ y: 60, opacity: 0 }}
+              initial={{ y: 36, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.2, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-              style={{ display: "inline-block", color: "#00ff88" }}
+              transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+              style={{ display: "inline-block", color: "var(--accent-green)" }}
             >
               khoa
             </motion.span>
             <motion.span
-              initial={{ y: 60, opacity: 0 }}
+              initial={{ y: 36, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.4, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-              style={{ display: "inline-block", color: "#71717a" }}
+              transition={{ delay: 0.08, duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+              style={{ display: "inline-block", color: "var(--text-muted)" }}
             >
               .dev
             </motion.span>
           </motion.div>
 
-          {/* Progress bar */}
           <div
             style={{
-              width: 160,
+              width: 140,
               height: 2,
-              background: "rgba(255,255,255,0.06)",
+              background: "var(--border-color)",
               borderRadius: 1,
               overflow: "hidden",
             }}
@@ -70,10 +68,10 @@ export default function Preloader() {
             <motion.div
               initial={{ width: "0%" }}
               animate={{ width: "100%" }}
-              transition={{ duration: 1.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
               style={{
                 height: "100%",
-                background: "linear-gradient(90deg, #00ff88, #3b82f6)",
+                background: "linear-gradient(90deg, var(--accent-green), var(--accent-blue))",
                 borderRadius: 1,
               }}
             />

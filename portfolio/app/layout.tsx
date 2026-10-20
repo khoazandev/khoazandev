@@ -19,15 +19,15 @@ export default function RootLayout({
   );
 
   return (
-    <html lang={locale} data-theme="dark">
+    <html lang={locale} data-theme="dark" suppressHydrationWarning>
       <head>
-        <title>Lê Văn Khoa — Full-Stack Developer</title>
+        <title>Lê Văn Khoa — Frontend Developer (React.js / Next.js)</title>
         <meta
           name="description"
-          content="Portfolio of Lê Văn Khoa — full-stack developer focused on polished web products with Next.js, React, Node.js, and Spring Boot."
+          content="Portfolio of Lê Văn Khoa — Software Engineer specializing in Frontend Development (React.js, Next.js, TypeScript)."
         />
       </head>
-      <body>
+      <body suppressHydrationWarning>
         <ThemeProvider>
           <LocaleContext.Provider value={ctx}>
             {children}
