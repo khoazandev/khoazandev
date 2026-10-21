@@ -1587,6 +1587,87 @@ body::before {
   height: 100%;
 }
 
+/* ─── SCROLL ANIMATION ENHANCEMENTS (TRACING BEAM, MARQUEE, SECTION BEAM) ─── */
+.section-title-wrap {
+  display: inline-flex;
+  flex-direction: column;
+  margin-bottom: 40px;
+}
+.section-title-wrap .section-title {
+  margin-bottom: 10px;
+}
+.section-beam-line {
+  height: 3px;
+  width: 110px;
+  border-radius: 100px;
+  background: linear-gradient(90deg, var(--accent-green), var(--accent-blue), transparent);
+  transform-origin: left center;
+  box-shadow: 0 0 14px rgba(0, 255, 136, 0.45);
+}
+
+.exp-tracing-beam {
+  position: absolute;
+  left: -2px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  transform-origin: top;
+  background: linear-gradient(180deg, var(--accent-green) 0%, var(--accent-blue) 55%, var(--accent-purple) 100%);
+  box-shadow: 0 0 16px var(--accent-green);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.marquee-section {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 18px 0;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  background: rgba(17, 19, 28, 0.45);
+  backdrop-filter: blur(10px);
+  mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+}
+[data-theme="light"] .marquee-section {
+  background: rgba(255, 255, 255, 0.65);
+}
+.marquee-scroll-shift {
+  will-change: transform;
+}
+.marquee-track {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: max-content;
+  animation: marqueeSlide 32s linear infinite;
+}
+@keyframes marqueeSlide {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-33.333%); }
+}
+.marquee-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 16px;
+  border-radius: 100px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  white-space: nowrap;
+}
+.marquee-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-green);
+  box-shadow: 0 0 8px var(--accent-green);
+}
 /* ─── RESPONSIVE ─── */
 @media (max-width: 1024px) {
   .navbar-links { gap: 20px; }

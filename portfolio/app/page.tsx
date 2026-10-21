@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef, useMemo } from "react";
 import Image from "next/image";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import {
   FiSearch,
   FiMoon,
@@ -53,19 +53,97 @@ function ScrollProgress() {
 function ScrollReveal({
   children,
   delay = 0,
+  variant = "up",
 }: {
   children: React.ReactNode;
   delay?: number;
+  variant?: "up" | "left" | "right" | "scale";
 }) {
+  const hidden = {
+    opacity: 0,
+    y: variant === "up" ? 48 : variant === "scale" ? 28 : 16,
+    x: variant === "left" ? -44 : variant === "right" ? 44 : 0,
+    scale: variant === "scale" ? 0.92 : 0.96,
+    filter: "blur(8px)",
+  };
   return (
     <motion.div
-      initial={{ opacity: 0, y: 32 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] }}
+      initial={hidden}
+      whileInView={{ opacity: 1, y: 0, x: 0, scale: 1, filter: "blur(0px)" }}
+      viewport={{ once: false, amount: 0.14, margin: "-40px" }}
+      transition={{ duration: 0.65, delay, ease: [0.22, 1, 0.36, 1] }}
     >
       {children}
     </motion.div>
+  );
+}
+
+function SectionHeader({ label, title }: { label: string; title: string }) {
+  return (
+    <ScrollReveal>
+      <div className="section-label">{label}</div>
+      <div className="section-title-wrap">
+        <h2 className="section-title">{title}</h2>
+        <motion.div
+          className="section-beam-line"
+          initial={{ scaleX: 0, opacity: 0 }}
+          whileInView={{ scaleX: 1, opacity: 1 }}
+          viewport={{ once: false, amount: 0.5 }}
+          transition={{ duration: 0.75, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+        />
+      </div>
+    </ScrollReveal>
+  );
+}
+
+function TechMarquee() {
+  const { scrollYProgress } = useScroll();
+  const xOffset = useTransform(scrollYProgress, [0, 1], ["0%", "-18%"]);
+  const items = [
+    "React.js 19",
+    "Next.js 16",
+    "TypeScript",
+    "TailwindCSS",
+    "Zustand",
+    "Redux Toolkit",
+    "Figma UI/UX",
+    "PageSpeed 90+",
+    "Gemini AI SDK",
+    "Spring Boot",
+    "FastAPI",
+    "LiveKit WebRTC",
+    "Docker",
+  ];
+  const loop = [...items, ...items, ...items];
+
+  return (
+    <div className="marquee-section" aria-hidden="true">
+      <motion.div className="marquee-scroll-shift" style={{ x: xOffset }}>
+        <div className="marquee-track">
+          {loop.map((item, idx) => (
+            <span className="marquee-pill" key={idx}>
+              <span className="marquee-dot" />
+              {item}
+            </span>
+          ))}
+        </div>
+      </motion.div>
+    </div>
+  );
+}
+
+function ParallaxOrbs() {
+  const { scrollYProgress } = useScroll();
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, -240]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [0, 200]);
+  const y3 = useTransform(scrollYProgress, [0, 1], [0, -160]);
+
+  return (
+    <div className="floating-orbs">
+      <motion.div className="floating-orb" style={{ y: y1 }} />
+      <motion.div className="floating-orb" style={{ y: y2 }} />
+      <motion.div className="floating-orb" style={{ y: y3 }} />
+    </div>
   );
 }
 
@@ -383,6 +461,16 @@ function Hero() {
    ================================================================ */
 function Experience() {
   const { t } = useLocale();
+  const timelineRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: timelineRef,
+    offset: ["start 78%", "end 35%"],
+  });
+  const beamScale = useSpring(scrollYProgress, {
+    stiffness: 110,
+    damping: 24,
+    restDelta: 0.001,
+  });
 
   const experiences = [
     {
@@ -405,14 +493,12 @@ function Experience() {
 
   return (
     <section id="experience" className="section">
-      <ScrollReveal>
-        <div className="section-label">{t("exp.label")}</div>
-        <h2 className="section-title">{t("exp.title")}</h2>
-      </ScrollReveal>
+      <SectionHeader label={t("exp.label")} title={t("exp.title")} />
 
-      <div className="exp-timeline">
+      <div className="exp-timeline" ref={timelineRef}>
+        <motion.div className="exp-tracing-beam" style={{ scaleY: beamScale }} />
         {experiences.map((exp, i) => (
-          <ScrollReveal key={exp.company} delay={i * 0.1}>
+          <ScrollReveal key={exp.company} delay={i * 0.12} variant={i % 2 === 0 ? "left" : "right"}>
             <div className="exp-timeline-item">
               <div className="exp-node-dot" />
               <TiltCard>
@@ -537,7 +623,7 @@ function Projects() {
   const secondaryList = filtered.filter((p) => !p.featured);
 
   const renderProjectCard = (p: (typeof projectsData)[number], i: number) => (
-    <ScrollReveal key={p.title} delay={i * 0.07}>
+    <ScrollReveal key={p.title} delay={i * 0.08} variant="scale">
       <TiltCard className={p.featured ? "featured-tilt" : ""}>
         <div className={`project-card${p.featured ? " project-card-featured" : ""}`}>
           {p.preview && (
@@ -628,10 +714,7 @@ function Projects() {
 
   return (
     <section id="projects" className="section">
-      <ScrollReveal>
-        <div className="section-label">{t("projects.label")}</div>
-        <h2 className="section-title">{t("projects.title")}</h2>
-      </ScrollReveal>
+      <SectionHeader label={t("projects.label")} title={t("projects.title")} />
 
       <ScrollReveal>
         <div className="project-filters">
@@ -703,10 +786,7 @@ function Skills() {
 
   return (
     <section id="skills" className="section">
-      <ScrollReveal>
-        <div className="section-label">{t("skills.label")}</div>
-        <h2 className="section-title">{t("skills.title")}</h2>
-      </ScrollReveal>
+      <SectionHeader label={t("skills.label")} title={t("skills.title")} />
 
       <div className="skills-grid">
         {skillsData.map((cat, i) => (
@@ -755,13 +835,10 @@ function About() {
 
   return (
     <section id="about" className="section">
-      <ScrollReveal>
-        <div className="section-label">{t("about.label")}</div>
-        <h2 className="section-title">{t("about.title")}</h2>
-      </ScrollReveal>
+      <SectionHeader label={t("about.label")} title={t("about.title")} />
 
       <div className="about-content">
-        <ScrollReveal delay={0.08}>
+        <ScrollReveal delay={0.08} variant="left">
           <div className="about-text">
             <p dangerouslySetInnerHTML={{ __html: t("about.p1") }} />
             <p dangerouslySetInnerHTML={{ __html: t("about.p2") }} />
@@ -778,7 +855,7 @@ function About() {
           </div>
         </ScrollReveal>
 
-        <ScrollReveal delay={0.16}>
+        <ScrollReveal delay={0.16} variant="right">
           <div className="education-card">
             <div className="edu-header">
               <span className="edu-icon-box">
@@ -858,13 +935,10 @@ function Contact() {
 
   return (
     <section id="contact" className="section">
-      <ScrollReveal>
-        <div className="section-label">{t("contact.label")}</div>
-        <h2 className="section-title">{t("contact.title")}</h2>
-      </ScrollReveal>
+      <SectionHeader label={t("contact.label")} title={t("contact.title")} />
 
       <div className="contact-grid">
-        <ScrollReveal delay={0.1}>
+        <ScrollReveal delay={0.1} variant="left">
           <div className="contact-info-side">
             <p className="contact-desc">{t("contact.text")}</p>
             <div className="contact-links-vertical">
@@ -911,7 +985,7 @@ function Contact() {
           </div>
         </ScrollReveal>
 
-        <ScrollReveal delay={0.2}>
+        <ScrollReveal delay={0.2} variant="right">
           <form className="contact-form" onSubmit={handleSubmit}>
             <div className="form-group">
               <input
@@ -985,11 +1059,7 @@ export default function Home() {
       <ParticleField />
       <CustomCursor />
 
-      <div className="floating-orbs">
-        <div className="floating-orb" />
-        <div className="floating-orb" />
-        <div className="floating-orb" />
-      </div>
+      <ParallaxOrbs />
 
       <Navbar onSearchOpen={() => setSearchOpen(true)} />
 
@@ -998,6 +1068,7 @@ export default function Home() {
 
       <main>
         <Hero />
+        <TechMarquee />
         <Experience />
         <Projects />
         <Skills />
