@@ -531,6 +531,99 @@ function Projects() {
       ? projectsData
       : projectsData.filter((p) => p.tech.includes(activeFilter));
 
+  const featuredList = filtered.filter((p) => p.featured);
+  const secondaryList = filtered.filter((p) => !p.featured);
+
+  const renderProjectCard = (p: (typeof projectsData)[number], i: number) => (
+    <ScrollReveal key={p.title} delay={i * 0.07}>
+      <TiltCard className={p.featured ? "featured-tilt" : ""}>
+        <div className={`project-card${p.featured ? " project-card-featured" : ""}`}>
+          {p.preview && (
+            <a
+              href={p.live || p.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="project-preview-wrap"
+              aria-label={p.title}
+            >
+              <div className="project-browser-bar">
+                <span className="browser-dot red" />
+                <span className="browser-dot yellow" />
+                <span className="browser-dot green" />
+                <span className="browser-url">{p.live?.replace("https://", "")}</span>
+              </div>
+              <div className="project-preview-img-box">
+                <Image
+                  src={p.preview}
+                  alt={p.title}
+                  width={640}
+                  height={360}
+                  className="project-preview-img"
+                />
+              </div>
+            </a>
+          )}
+
+          <div className="project-banner" style={{ background: p.accent }}>
+            <div className="project-meta-top">
+              <span className="project-role-tag">{p.role}</span>
+              {p.featured && (
+                <span className="project-featured-badge">
+                  <FiStar size={12} /> {t("projects.featured")}
+                </span>
+              )}
+            </div>
+            <h3>{p.title}</h3>
+          </div>
+
+          <div className="project-body">
+            <p className="project-desc">{p.desc}</p>
+
+            <ul className="project-highlights">
+              {p.highlights.map((h) => (
+                <li key={h}>
+                  <FiCheckCircle size={14} className="highlight-icon" />
+                  <span>{h}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div className="project-tech-pills">
+              {p.tech.map((tech) => (
+                <span className="project-tech-pill" key={tech}>
+                  {tech}
+                </span>
+              ))}
+            </div>
+
+            <div className="project-actions">
+              {p.live && (
+                <a
+                  href={p.live}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="project-action-btn primary"
+                >
+                  <FiExternalLink size={15} />
+                  {t("projects.liveDemo")}
+                </a>
+              )}
+              <a
+                href={p.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="project-action-btn"
+              >
+                <FiGithub size={15} />
+                {t("projects.sourceCode")}
+              </a>
+            </div>
+          </div>
+        </div>
+      </TiltCard>
+    </ScrollReveal>
+  );
+
   return (
     <section id="projects" className="section">
       <ScrollReveal>
@@ -552,97 +645,17 @@ function Projects() {
         </div>
       </ScrollReveal>
 
-      <div className="projects-grid">
-        {filtered.map((p, i) => (
-          <ScrollReveal key={p.title} delay={i * 0.07}>
-            <TiltCard className={p.featured ? "featured-tilt" : ""}>
-              <div className={`project-card${p.featured ? " project-card-featured" : ""}`}>
-                {p.preview && (
-                  <a
-                    href={p.live || p.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="project-preview-wrap"
-                    aria-label={p.title}
-                  >
-                    <div className="project-browser-bar">
-                      <span className="browser-dot red" />
-                      <span className="browser-dot yellow" />
-                      <span className="browser-dot green" />
-                      <span className="browser-url">{p.live?.replace("https://", "")}</span>
-                    </div>
-                    <div className="project-preview-img-box">
-                      <Image
-                        src={p.preview}
-                        alt={p.title}
-                        width={640}
-                        height={360}
-                        className="project-preview-img"
-                      />
-                    </div>
-                  </a>
-                )}
+      {featuredList.length > 0 && (
+        <div className="projects-grid-featured">
+          {featuredList.map((p, i) => renderProjectCard(p, i))}
+        </div>
+      )}
 
-                <div className="project-banner" style={{ background: p.accent }}>
-                  <div className="project-meta-top">
-                    <span className="project-role-tag">{p.role}</span>
-                    {p.featured && (
-                      <span className="project-featured-badge">
-                        <FiStar size={12} /> {t("projects.featured")}
-                      </span>
-                    )}
-                  </div>
-                  <h3>{p.title}</h3>
-                </div>
-
-                <div className="project-body">
-                  <p className="project-desc">{p.desc}</p>
-
-                  <ul className="project-highlights">
-                    {p.highlights.map((h) => (
-                      <li key={h}>
-                        <FiCheckCircle size={14} className="highlight-icon" />
-                        <span>{h}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="project-tech-pills">
-                    {p.tech.map((tech) => (
-                      <span className="project-tech-pill" key={tech}>
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="project-actions">
-                    {p.live && (
-                      <a
-                        href={p.live}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="project-action-btn primary"
-                      >
-                        <FiExternalLink size={15} />
-                        {t("projects.liveDemo")}
-                      </a>
-                    )}
-                    <a
-                      href={p.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="project-action-btn"
-                    >
-                      <FiGithub size={15} />
-                      {t("projects.sourceCode")}
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </TiltCard>
-          </ScrollReveal>
-        ))}
-      </div>
+      {secondaryList.length > 0 && (
+        <div className="projects-grid">
+          {secondaryList.map((p, i) => renderProjectCard(p, i))}
+        </div>
+      )}
     </section>
   );
 }

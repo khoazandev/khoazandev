@@ -280,7 +280,7 @@ body::before {
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 112px 24px 64px;
+  padding: 94px 24px 40px;
   position: relative;
   overflow: hidden;
 }
@@ -290,15 +290,15 @@ body::before {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 7px 18px;
+  padding: 6px 16px;
   border-radius: 100px;
   background: rgba(0, 255, 136, 0.08);
   border: 1px solid rgba(0, 255, 136, 0.25);
   color: var(--text-primary);
-  font-size: 0.86rem;
+  font-size: 0.84rem;
   font-weight: 500;
   text-decoration: none;
-  margin-bottom: 24px;
+  margin-bottom: 18px;
   transition: all var(--transition);
 }
 .hero-status-pill:hover {
@@ -321,8 +321,8 @@ body::before {
 
 .hero-avatar {
   position: relative;
-  width: 152px; height: 152px;
-  margin-bottom: 22px;
+  width: 136px; height: 136px;
+  margin-bottom: 16px;
 }
 .hero-avatar-glow {
   position: absolute;
@@ -347,18 +347,18 @@ body::before {
 
 .hero-badge {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   color: var(--text-secondary);
   letter-spacing: 0.8px;
-  margin-bottom: 14px;
+  margin-bottom: 10px;
 }
 
 .hero-name {
-  font-size: clamp(2.8rem, 7.5vw, 5.2rem);
+  font-size: clamp(2.6rem, 6.8vw, 4.6rem);
   font-weight: 700;
   letter-spacing: -2.5px;
-  line-height: 1.06;
-  margin-bottom: 18px;
+  line-height: 1.05;
+  margin-bottom: 14px;
 }
 .hero-name .accent {
   background: linear-gradient(135deg, var(--accent-green) 0%, var(--accent-blue) 100%);
@@ -374,20 +374,20 @@ body::before {
 }
 
 .hero-tagline {
-  font-size: 1.18rem;
+  font-size: 1.1rem;
   color: var(--text-secondary);
   max-width: 660px;
-  margin-bottom: 24px;
+  margin-bottom: 18px;
   font-weight: 400;
 }
 
 .hero-typing {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 1.02rem;
+  font-size: 0.96rem;
   color: var(--accent-green);
   min-height: 1.6em;
-  margin-bottom: 30px;
-  padding: 6px 16px;
+  margin-bottom: 22px;
+  padding: 5px 15px;
   border-radius: 8px;
   background: rgba(0, 255, 136, 0.05);
   border: 1px solid rgba(0, 255, 136, 0.12);
@@ -401,19 +401,19 @@ body::before {
   gap: 14px;
   flex-wrap: wrap;
   justify-content: center;
-  margin-bottom: 26px;
+  margin-bottom: 18px;
 }
 
 .hero-socials {
   display: flex;
   gap: 12px;
   align-items: center;
-  margin-bottom: 44px;
+  margin-bottom: 26px;
 }
 .hero-socials a {
   color: var(--text-muted);
   transition: all var(--transition);
-  padding: 10px;
+  padding: 9px;
   border-radius: 10px;
   border: 1px solid transparent;
   display: flex;
@@ -431,8 +431,8 @@ body::before {
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
   width: 100%;
-  max-width: 960px;
-  padding: 22px 28px;
+  max-width: 980px;
+  padding: 18px 24px;
   background: var(--bg-card);
   backdrop-filter: blur(var(--glass-blur));
   border: 1px solid var(--border-color);
@@ -452,17 +452,19 @@ body::before {
 }
 .hero-stat-value {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 1.55rem;
+  font-size: 1.4rem;
   font-weight: 700;
+  white-space: nowrap;
   background: linear-gradient(135deg, var(--accent-green), var(--accent-blue));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 .hero-stat-label {
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   color: var(--text-secondary);
   font-weight: 500;
+  white-space: nowrap;
 }
 
 /* ─── BUTTONS ─── */
@@ -665,9 +667,15 @@ body::before {
 }
 [data-theme="light"] .filter-pill.active { color: #fff; }
 
+.projects-grid-featured {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-bottom: 24px;
+}
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 24px;
 }
 .project-card {
@@ -1578,6 +1586,7 @@ body::before {
 @media (max-width: 900px) {
   .about-content { grid-template-columns: 1fr; }
   .awards-grid { grid-template-columns: 1fr; }
+  .projects-grid-featured { grid-template-columns: 1fr; }
   .hero-stats-strip { grid-template-columns: repeat(2, 1fr); gap: 20px; }
   .hero-stat-item:nth-child(2) { border-right: none; }
 }
