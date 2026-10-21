@@ -12,7 +12,7 @@ export default function TiltCard({ children, className = "" }: TiltCardProps) {
   const [style, setStyle] = useState<React.CSSProperties>({});
 
   const handleMove = (e: MouseEvent<HTMLDivElement>) => {
-    if (!ref.current) return;
+    if (!ref.current || window.matchMedia("(pointer: coarse)").matches) return;
     const rect = ref.current.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
