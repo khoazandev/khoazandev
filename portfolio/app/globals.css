@@ -1620,15 +1620,17 @@ body::before {
 
 .marquee-section {
   position: relative;
-  width: 100%;
+  width: calc(100% - 48px);
+  max-width: calc(var(--max-width) - 48px);
+  margin: 0 auto;
   overflow: hidden;
-  padding: 18px 0;
-  border-top: 1px solid var(--border-color);
-  border-bottom: 1px solid var(--border-color);
-  background: rgba(17, 19, 28, 0.45);
-  backdrop-filter: blur(10px);
-  mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  padding: 14px 0;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  backdrop-filter: blur(var(--glass-blur));
+  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
 }
 [data-theme="light"] .marquee-section {
   background: rgba(255, 255, 255, 0.65);
@@ -1715,6 +1717,7 @@ body::before {
   .hero-name { letter-spacing: -1.5px; }
   .hero-avatar { width: 120px; height: 120px; }
   .section { padding: 64px 18px; }
+  .marquee-section { width: calc(100% - 36px); }
   .chat-window { width: calc(100vw - 32px); right: 16px; bottom: 84px; }
 }
 
