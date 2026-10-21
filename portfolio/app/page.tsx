@@ -413,9 +413,10 @@ function Experience() {
       <div className="exp-timeline">
         {experiences.map((exp, i) => (
           <ScrollReveal key={exp.company} delay={i * 0.1}>
-            <TiltCard>
-              <div className="exp-card">
-                <div className="exp-node-dot" />
+            <div className="exp-timeline-item">
+              <div className="exp-node-dot" />
+              <TiltCard>
+                <div className="exp-card">
                 <div className="exp-header">
                   <div className="exp-title-group">
                     <div className="exp-role-row">
@@ -449,8 +450,9 @@ function Experience() {
                     </span>
                   ))}
                 </div>
-              </div>
-            </TiltCard>
+                </div>
+              </TiltCard>
+            </div>
           </ScrollReveal>
         ))}
       </div>
@@ -722,7 +724,7 @@ function Skills() {
                     </span>
                   ))}
                 </div>
-              </div>
+                </div>
             </TiltCard>
           </ScrollReveal>
         ))}

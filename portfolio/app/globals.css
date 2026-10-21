@@ -520,6 +520,9 @@ body::before {
   border-left: 2px solid rgba(0, 255, 136, 0.22);
   margin-left: 10px;
 }
+.exp-timeline-item {
+  position: relative;
+}
 .exp-card {
   position: relative;
   background: var(--bg-card);
@@ -537,7 +540,9 @@ body::before {
 }
 .exp-node-dot {
   position: absolute;
-  left: -37px;
+  left: -36px;
+  z-index: 2;
+  pointer-events: none;
   top: 34px;
   width: 14px;
   height: 14px;
